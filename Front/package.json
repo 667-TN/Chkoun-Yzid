@@ -5,8 +5,7 @@
   "author": "Aziz saad Aziz Tounsi Karim Zargouni Achref Gallah",
   "private": true,
   "scripts": {
-    "dev": "node build/dev-server.js",
-    "start": "node build/dev-server.js",
+    "start": "nodemon server/index.js",
     "build": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
@@ -17,7 +16,10 @@
     "bootstrap": "^4.5.3",
     "bootstrap-vue": "^2.21.2",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",
@@ -83,7 +85,8 @@
     "webpack-dev-middleware": "^1.12.0",
     "webpack-hot-middleware": "^2.19.1",
     "webpack-merge": "^4.1.0",
-    "uglify-es": "^3.1.3"
+    "uglify-es": "^3.1.3",
+    "nodemon": "^2.0.7"
   },
   "engines": {
     "node": ">= 4.0.0",
