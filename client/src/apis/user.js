@@ -1,7 +1,7 @@
 import api from "./api";
 
 
-const end_point = 'products';
+const end_point = 'users';
 
 export default {
     create(product) {
