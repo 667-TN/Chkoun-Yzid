@@ -6,8 +6,12 @@ var db = require("../database-mysql");
 // var Item = require('../database-mongo/Item.model.js');
 
 // UNCOMMENT IF USING MYSQL WITH CALLBACKS
-var selectAll = function (req, res) {
-  db.query("SELECT * FROM User", (err, items, fields) => {
+////
+
+
+
+var selectAllCars = function (req, res) {
+  db.query("SELECT * FROM Car", (err, items, fields) => {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -31,4 +35,4 @@ var selectAll = function (req, res) {
 // }
 
 
-module.exports = { selectAll };
+module.exports = { selectAllCars };

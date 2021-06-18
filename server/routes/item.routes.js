@@ -1,7 +1,10 @@
 const router = require('express').Router();
-const itemController = require("../controllers/item.controller");
+const Controller = require("../controllers/index.js")
 
-router.get("/", itemController.selectAll);
+router.get("/users", Controller.userController.selectAll);
+router.get("/cars", Controller.carController.selectAllCars);
+
+
 // router.post("/", itemController.addItem );
 // router.delete("/:id", itemController.deleteItem);
 
