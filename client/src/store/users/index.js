@@ -1,4 +1,4 @@
-import { axios } from "vue/types/umd"
+import axios from "axios"
 
 const users = {
     state: () => ({
@@ -17,6 +17,7 @@ const users = {
             state.currentUser = user
         },
         LOGOUT: (state) => {
+            window.localStorage.clear()
             state.token = ""
             state.currentUser = null
         }
@@ -24,7 +25,7 @@ const users = {
     actions: {
         LOGIN: async ({commit}, payload) => {
             return new Promise((resolve, reject) => {
-                axios.post("http://localhost:8000/api/users/login", payload)
+                axios.post("http://localhost:8000/api/user/login", payload)
                 .then(({data}) => {
                     commit("AUTH_SUCCESS", data)
                     resolve(data)
@@ -37,7 +38,7 @@ const users = {
         },
         SIGNUP: async ({commit}, payload) => {
             return new Promise((resolve, reject) => {
-                axios.post("http://localhost:8000/api/users/signup", payload)
+                axios.post("http://localhost:8000/api/user/signup", payload)
                 .then(({data}) => {
                     commit("AUTH_SUCCESS", data)
                     resolve(data)
@@ -61,7 +62,7 @@ const users = {
                     commit('LOGOUT')
                     reject({error: "No Token"})
                 } else {
-                    axios.post("http://localhost:8000/api/users/verify", {token})
+                    axios.post("http://localhost:8000/api/user/verify", {token})
                     .then(({data}) => {
                         if (data.user) {
                             commit("AUTH_SUCCESS", {user: data.user, token})
@@ -70,6 +71,11 @@ const users = {
                             commit ("LOGOUT")
                             reject({error: "Unvalid Token"})
                         }
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        commit ("LOGOUT")
+                        reject({error: "Unvalid Token"})
                     })
                 }
             })
