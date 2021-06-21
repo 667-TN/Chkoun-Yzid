@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "../build/build.js"));
 
-app.use("/api/car", carRoute);
+app.use("/api/cars", carRoute);
 app.use("/api/user", userRoute);
 
 app.listen(PORT, function () {

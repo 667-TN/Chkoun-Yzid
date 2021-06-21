@@ -33,8 +33,12 @@ export default {
         email: this.email,
         password: this.password
       })
+      this.ToAuction()
       console.log(res)
-    }
+    },
+    ToAuction() {
+      this.$router.push({ name: "Auction" });
+    },
   },
 }
 </script>

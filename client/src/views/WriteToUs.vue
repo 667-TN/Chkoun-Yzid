@@ -1,65 +1,24 @@
 <template>
-  <mdb-container>
-    <mdb-row>
-      <mdb-col size="12" class="text-center mb-5">
-        <mdb-btn @click.native="showModal = true" color="info"
-          >Launch modal contact form</mdb-btn
-        >
-        <mdb-modal
-          :show="showModal"
-          @close="showModal = false"
-          cascade
-          class="text-left"
-        >
-          <mdb-modal-header class="primary-color white-text">
-            <h4 class="title"><fa class="fas fa-pencil-alt" /> Contact form</h4>
-          </mdb-modal-header>
-          <mdb-modal-body class="grey-text">
-            <mdb-input
-              size="sm"
-              label="Your name"
-              icon="user"
-              group
-              type="text"
-              validate
-              error="wrong"
-              success="right"
-            />
-            <mdb-input
-              size="sm"
-              label="Your email"
-              icon="envelope"
-              group
-              type="email"
-              validate
-              error="wrong"
-              success="right"
-            />
-            <mdb-input
-              size="sm"
-              label="Subject"
-              icon="tag"
-              group
-              type="text"
-              validate
-              error="wrong"
-              success="right"
-            />
-            <mdb-textarea
-              size="sm"
-              :rows="2"
-              label="Your message"
-              icon="pencil"
-            />
-          </mdb-modal-body>
-          <mdb-modal-footer>
-            <mdb-btn color="secondary" @click.native="showModal = false"
-              >Close</mdb-btn
-            >
-            <mdb-btn color="primary">Save changes</mdb-btn>
-          </mdb-modal-footer>
-        </mdb-modal>
-      </mdb-col>
-    </mdb-row>
-  </mdb-container>
+  <div>
+    <label for="first_name" class="grey-text">Full-Name</label>
+    <input
+      v-model="first_name"
+      type="text"
+      id="first_name"
+      class="form-control"
+    />
+    <br />
+    <label for="last_name" class="grey-text">E-mail</label>
+    <input
+      v-model="last_name"
+      type="text"
+      id="last_name"
+      class="form-control"
+    />
+    <br />
+    <label for="email" class="grey-text">message</label>
+    <input v-model="email" type="email" id="email" class="form-control" />
+    <br />
+    <b-button variant="success" @click="ToAuction()">Submit</b-button>
+  </div>
 </template>

@@ -1,10 +1,9 @@
 <template>
- <div>
-   <div v-for="(car, index) in cars" :key="car.id" class="cars">
-    {{index}}. 
+ <div class="cars">
+   <div v-for="(car) in cars" :key="car.id" >
   <b-card
     :title="car.car_name"
-    img-src="https://picsum.photos/600/300/?image=25"
+    img-src="https://mediapool.bmwgroup.com/cache/P9/201703/P90251019/P90251019-the-new-bmw-m4-cs-04-2017-600px.jpg"
     img-alt="Image"
     img-top
     tag="article"
@@ -15,7 +14,7 @@
     {{car.car_name}}
     </b-card-text>
 
-    <b-button href="#" variant="primary">Go somewhere</b-button>
+    <b-button href="#"  @click="ToCar()">Car Details</b-button>
   </b-card>
 </div>
  </div>
@@ -29,6 +28,11 @@ export default  ({
     return {
       cars : null 
     }
+  },
+  methods: {
+    ToCar() {
+      this.$router.push({ name: "Car" });
+    },
   },
   async mounted() {
     // console.log(this.$store.getters.getCars)
@@ -52,6 +56,7 @@ export default  ({
 .cars{
   display: grid;
   grid-template-columns: auto auto auto ;
+  padding: 100px;
 }
 </style>
 
