@@ -1,6 +1,6 @@
 <template>
  <div>
-   <div v-for="(car, index) in cars" :key="car.id">
+   <div v-for="(car, index) in cars" :key="car.id" class="cars">
     {{index}}. 
   <b-card
     :title="car.car_name"
@@ -48,5 +48,11 @@ export default  ({
 })
 </script>
 
+<style scoped>
+.cars{
+  display: grid;
+  grid-template-columns: auto auto auto ;
+}
+</style>
 
 

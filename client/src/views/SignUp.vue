@@ -1,32 +1,62 @@
 <template>
-  <form>
+  <div>
     <p class="h4 text-center mb-4">Sign up</p>
-    <label for="defaultFormRegisterNameEx" class="grey-text">Your name</label>
-    <input type="text" id="defaultFormRegisterNameEx" class="form-control" />
-    <br />
-    <label for="defaultFormRegisterEmailEx" class="grey-text">Your email</label>
-    <input type="email" id="defaultFormRegisterEmailEx" class="form-control" />
-    <br />
-    <label for="defaultFormRegisterConfirmEx" class="grey-text"
-      >Confirm your email</label
-    >
+    <label for="first_name" class="grey-text">First Name</label>
     <input
-      type="email"
-      id="defaultFormRegisterConfirmEx"
+      v-model="first_name"
+      type="text"
+      id="first_name"
       class="form-control"
     />
     <br />
-    <label for="defaultFormRegisterPasswordEx" class="grey-text"
-      >Your password</label
-    >
+    <label for="last_name" class="grey-text">Last Name</label>
     <input
+      v-model="last_name"
+      type="text"
+      id="last_name"
+      class="form-control"
+    />
+    <br />
+    <label for="email" class="grey-text">Email</label>
+    <input v-model="email" type="email" id="email" class="form-control" />
+    <br />
+    <label for="password" class="grey-text">Password</label>
+    <input
+      v-model="password"
       type="password"
-      id="defaultFormRegisterPasswordEx"
+      id="password"
       class="form-control"
     />
     <div class="text-center mt-4">
-      <button class="btn btn-unique" type="submit">Register</button>
+      <button class="btn btn-unique" @click="signup()">Register</button>
     </div>
-  </form>
+  </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      first_name: "",
+      last_name: "",
+      email: "",
+      password: "",
+      front_id_img: "hardcoded",
+      back_id_img: "hardcoded",
+    };
+  },
+  methods: {
+    async signup() {
+      console.log(this.$store)
+      await this.$store.dispatch("SIGNUP", {
+        first_name: this.first_name,
+        last_name: this.last_name,
+        email: this.email,
+        password: this.password,
+        front_id_img: this.front_id_img,
+        back_id_img: this.back_id_img,
+      });
+    },
+  },
+};
+</script>
