@@ -1,10 +1,8 @@
 const express = require("express");
-const itemRoutes = require("./routes/item.routes");
+const carRoute = require("./routes/car.route");
+const userRoute = require("./routes/user.route");
 const cors = require('cors')
-// TODO: Update this
-// UNCOMMENT THE DATABASE YOU'D LIKE TO USE
-var items = require("./database-mysql");
-// var items = require('./database-mongo');
+require('dotenv').config()
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -14,9 +12,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "../build/build.js"));
 
-app.use("/api", itemRoutes);
-// app.use("/api/users", userRoutes);
+app.use("/api/cars", carRoute);
+app.use("/api/user", userRoute);
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log("listening on port 8000!");
 });

@@ -30,11 +30,13 @@ const cars = {
             state.currentCar = payload
         }
     },
+
     actions: {
         GET_ALL_CARS: async ({ commit }) => {
             return new Promise((resolve, reject) => {
                 axios.get('http://localhost:8000/api/cars').then(({ data }) => {
                     commit("SET_CARS", data)
+                    console.log(data)
                     resolve(data)
                 })
                     .catch(error => {

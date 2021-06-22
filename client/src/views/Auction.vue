@@ -1,52 +1,47 @@
 <template>
- <div>
-   <div v-for="(car, index) in cars" :key="car.id">
-    {{index}}. 
-  <b-card
-    :title="car.car_name"
-    img-src="https://picsum.photos/600/300/?image=25"
-    img-alt="Image"
-    img-top
-    tag="article"
-    style="max-width: 20rem;"
-    class="mb-2"
-  >
-    <b-card-text>
-    {{car.car_name}}
-    </b-card-text>
-
-    <b-button href="#" variant="primary">Go somewhere</b-button>
-  </b-card>
+  <div class="wrap">
+<div class="template-1">
+   <AuctionCard v-for="car in cars" :key="car.id" :car="car" />
 </div>
- </div>
+  </div>
 </template>
 
 
+
+
+
+
+
 <script>
-
-export default  ({
-  data() { 
-    return {
-      cars : null 
-    }
+import AuctionCard from './AuctionCard.vue'
+export default  {
+  components : {
+      AuctionCard,
   },
-  async mounted() {
-    // console.log(this.$store.getters.getCars)
-    // console.log(this.$store.state.cars.cars)
-    try {
-      const data = await this.$store.dispatch('GET_ALL_CARS')
-      // console.log('this is data ----------------',data)
-      this.cars = data
-      console.log('this is the cars--------',this.cars[0].car_name)
-    
+  computed : {
 
-    }
-    catch (error) {
-      console.log(error)
-    }
-  } 
-})
+     cars() {
+     return this.$store.state.cars.cars
+   }
+  },
+  mounted() {
+       this.$store.dispatch('GET_ALL_CARS')
+  }
+  }
+
 </script>
 
+<style scoped>
+.template-1{
+  display: grid;
+  grid-template-columns: auto auto auto ;
+  padding: 200px;
+  
+}
+.wrap {
+margin-right: 140px;
+margin-top: 100px;
+}
+</style>
 
 
