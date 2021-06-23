@@ -7,50 +7,33 @@
     :color-on-scroll="colorOnScroll"
   >
     <div class="md-toolbar-row md-collapse-lateral">
-      <div class="md-list-item" >
-         <md-list-item
-                to="/"
-                target="_blank"
-              >
-                <p>Chkoun Yzid</p>
-                </md-list-item>
+      <div class="md-list-item grey" >
+        <md-list-item to="/">
+          <p>Chkoun Yzid</p>
+        </md-list-item>
       </div>
       <div class="md-toolbar-section-end">
-    
-
         <div class="md-collapse">
           <div class="md-collapse-wrapper">
             <mobile-menu nav-mobile-section-start="false">
               <!-- Here you can add your items from the section-start of your toolbar -->
             </mobile-menu>
             <md-list>
-              
-  <li class="md-list-item" >
-              <md-list-item
-                to="/landing"
-                target="_blank"
-               
-              >
-                <p>Auctions</p>
+              <li class="md-list-item grey">
+                <md-list-item to="/landing" >
+                  <p>Auctions</p>
                 </md-list-item>
-  </li>
-               <li class="md-list-item" >
-                <md-list-item
-                to="/signup"
-                target="_blank"
-                >
-               <p>signup</p>
+              </li>
+              <li class="md-list-item green" >
+                <md-list-item to="/signup">
+                  <p>signup</p>
                 </md-list-item>
-               </li>
-                 <li class="md-list-item" >
-                <md-list-item
-                to="/login"
-                target="_blank"
-                >
-               <p>login</p>
+              </li>
+              <li class="md-list-item green">
+                <md-list-item to="/login">
+                  <p>login</p>
                 </md-list-item>
-               </li>
-              
+              </li>
             </md-list>
           </div>
         </div>
@@ -165,3 +148,14 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.grey{
+  background-color:		#909090;
+  border-radius: 12px;
+}
+.green{
+  background-color:green ;
+  border-radius: 12px
+}
+</style>
