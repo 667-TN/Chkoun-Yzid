@@ -7,7 +7,9 @@
     :color-on-scroll="colorOnScroll"
   >
     <div class="md-toolbar-row md-collapse-lateral">
+
       <div class="md-list-item">
+
         <md-list-item to="/">
           <p>Chkoun Yzid</p>
         </md-list-item>
@@ -19,6 +21,7 @@
               <!-- Here you can add your items from the section-start of your toolbar -->
             </mobile-menu>
             <md-list>
+
               <!-- <li class="md-list-item">
                 <md-list-item to="/landing">
                   <p>Auctions</p>
@@ -65,6 +68,7 @@
     </div>
               </li>
          
+
             </md-list>
           </div>
         </div>
@@ -210,3 +214,14 @@ export default {
 
 };
 </script>
+
+<style scoped>
+.grey{
+  background-color:		#909090;
+  border-radius: 12px;
+}
+.green{
+  background-color:green ;
+  border-radius: 12px
+}
+</style>
