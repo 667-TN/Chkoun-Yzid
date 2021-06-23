@@ -18,10 +18,10 @@
               <md-field class="md-form-group" slot="inputs">
                 <md-icon>lock_outline</md-icon>
                 <label>Password...</label>
-                <md-input v-model="password"></md-input>
+                <md-input v-model="password" type="password"></md-input>
               </md-field>
               <md-button slot="footer" class="md-simple md-success md-lg" @click="login()">
-               Register
+              Login
               </md-button>
             </login-card>
           </div>
@@ -55,7 +55,7 @@ export default {
       console.log(res)
     },
     ToAuction() {
-      this.$router.push({ name: "Auction" });
+      this.$router.push({ name: "index" });
     },
   },
   props: {
