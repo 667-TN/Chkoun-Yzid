@@ -7,7 +7,9 @@
     :color-on-scroll="colorOnScroll"
   >
     <div class="md-toolbar-row md-collapse-lateral">
-      <div class="md-list-item grey" >
+
+      <div class="md-list-item">
+
         <md-list-item to="/">
           <p>Chkoun Yzid</p>
         </md-list-item>
@@ -19,21 +21,54 @@
               <!-- Here you can add your items from the section-start of your toolbar -->
             </mobile-menu>
             <md-list>
-              <li class="md-list-item grey">
-                <md-list-item to="/landing" >
+
+              <!-- <li class="md-list-item">
+                <md-list-item to="/landing">
                   <p>Auctions</p>
                 </md-list-item>
-              </li>
-              <li class="md-list-item green" >
-                <md-list-item to="/signup">
-                  <p>signup</p>
+              </li> -->
+              <li>
+                 <div class="md-layout-item md-size-50 md-small-size-100">
+      <div class="md-list">
+        <li class="md-list-item">
+          <a href="javascript:void(0)" class="md-list-item-router md-list-item-container md-button-clean dropdown">
+            <div class="md-list-item-content">
+              <drop-down direction="down">
+                
+                <md-list-item slot="title" class="md-button md-button-link md-simple dropdown-toggle" data-toggle="dropdown">
+                 <i class="far fa-user-circle"></i>
+                  <p>Account</p>
                 </md-list-item>
+                <ul class="dropdown-menu dropdown-with-icons">
+                  <div v-if="!isLoggedIn">
+                  <li>
+                    <md-button to="/signup">
+                  <p>SignUp</p>
+                </md-button>
+                  </li>
+                  <li>
+                    <md-button to="/login">
+                  <p>Login</p>
+                </md-button>
+                  </li>
+                   </div>
+                   <div v-else @click="logout()">
+                      <li>
+                    <md-button to="/" >
+                  <p>Logout</p>
+                </md-button>
+                  </li>
+                     </div>
+                </ul>
+              </drop-down>
+            </div>
+          </a>
+        </li>
+      </div>
+    </div>
               </li>
-              <li class="md-list-item green">
-                <md-list-item to="/login">
-                  <p>login</p>
-                </md-list-item>
-              </li>
+         
+
             </md-list>
           </div>
         </div>
@@ -84,6 +119,7 @@ export default {
   },
   data() {
     return {
+      query:"",
       extraNavClasses: "",
       toggledClass: false,
     };
@@ -92,6 +128,9 @@ export default {
     showDownload() {
       const excludedRoutes = ["login", "landing", "profile"];
       return excludedRoutes.every((r) => r !== this.$route.name);
+    },
+    isLoggedIn() {
+      return this.$store.getters.isLoggedIn;
     },
   },
   methods: {
@@ -139,6 +178,32 @@ export default {
         element_id.scrollIntoView({ block: "end", behavior: "smooth" });
       }
     },
+      async logout() {
+      await this.$store.dispatch("LOGOUT");
+      this.ToLanding()
+    },
+    login() {
+      if (this.isLoggedIn === false) {
+        this.ToLogin();
+      } else this.ToSellACar();
+    },
+    ToLogin() {
+      this.$router.push({ name: "Login" });
+    },
+    ToSellACar() {
+      this.$router.push({ name: "SellACar" });
+    },
+    ToLanding() {
+      this.$router.push({ name: "landing" });
+    },
+    async beforeMount() {
+    try {
+       await this.$store.dispatch('GET_ALL_CARS')
+       await this.$store.dispatch("VERIFY_AUTH");
+    } catch (error) {
+      console.log(error);
+    }
+  }
   },
   mounted() {
     document.addEventListener("scroll", this.scrollListener);
@@ -146,6 +211,7 @@ export default {
   beforeDestroy() {
     document.removeEventListener("scroll", this.scrollListener);
   },
+
 };
 </script>
 
