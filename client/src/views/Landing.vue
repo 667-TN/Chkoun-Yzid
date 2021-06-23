@@ -10,9 +10,9 @@
             </div>
           </div>
         </div>
-     
       </div>
     </parallax>
+ 
   
   </div>
 </template>
@@ -111,4 +111,6 @@ export default {
     display: flex;
   }
 }
+
+
 </style>
