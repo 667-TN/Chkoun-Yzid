@@ -5,7 +5,7 @@
       <h3 class="title">{{car.car_name}}</h3>
       <p class="price">{{car.car_price}}</p>
       <p class="description">{{car.description}}</p>
-      <p><button>Bide Now</button></p>
+      <p><button @click="ToProfile()" >Bid Now</button></p>
     </div>
   </div>
 </template>
@@ -15,6 +15,7 @@
 export default {
   name: "ProductCard",
   components: {},
+
   data() {
     return {
       password: null,
@@ -22,6 +23,11 @@ export default {
       email: null,
       cars: [],
     };
+  },
+  methods: {
+       ToProfile(){
+   this.$router.push({name:"profile"})
+    },
   },
   async mounted() {
     try {
@@ -42,8 +48,8 @@ export default {
 .cars {
   display: grid;
   grid-template-columns: auto auto auto;
-  padding: 100px;
-  margin: 200px;
+  padding: 70px;
+  margin: 100px;
 }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -58,7 +64,6 @@ export default {
   color: grey;
   font-size: 22px;
 }
-
 .card button {
   border: none;
   outline: 0;
