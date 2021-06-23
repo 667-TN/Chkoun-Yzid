@@ -1,76 +1,55 @@
 <template>
-<div class="cards">
-  <div class="card">
-  <img src="../assets/img/bg.jpg" alt="Denim Jeans" style="width:100%">
-  <h1>Tailored Jeans</h1>
-  <p class="price">$19.99</p>
-  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-  <p><button>Add to Cart</button></p>
-</div>
-<div class="card">
-  <img src="../assets/img/bg.jpg" alt="Denim Jeans" style="width:100%">
-  <h1>Tailored Jeans</h1>
-  <p class="price">$19.99</p>
-  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-  <p><button>Add to Cart</button></p>
-</div>
-<div class="card">
-  <img src="../assets/img/bg.jpg" alt="Denim Jeans" style="width:100%">
-  <h1>Tailored Jeans</h1>
-  <p class="price">$19.99</p>
-  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-  <p><button>Add to Cart</button></p>
-</div>
-<div class="card">
-  <img src="../assets/img/bg.jpg" alt="Denim Jeans" style="width:100%">
-  <h1>Tailored Jeans</h1>
-  <p class="price">$19.99</p>
-  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-  <p><button>Add to Cart</button></p>
-</div>
-<div class="card">
-  <img src="../assets/img/bg.jpg" alt="Denim Jeans" style="width:100%">
-  <h1>Tailored Jeans</h1>
-  <p class="price">$19.99</p>
-  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-  <p><button>Add to Cart</button></p>
-</div>
-<div class="card">
-  <img src="../assets/img/bg.jpg" alt="Denim Jeans" style="width:100%">
-  <h1>Tailored Jeans</h1>
-  <p class="price">$19.99</p>
-  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-  <p><button>Add to Cart</button></p>
-</div>
-</div>
+  <div class="cars">
+    <div class="card" v-for="(car) in cars" :key="car.id">
+      <img :src="car.url" alt="Denim Jeans" style="width: 100%" />
+      <h3 class="title">{{car.car_name}}</h3>
+      <p class="price">{{car.car_price}}</p>
+      <p class="description">{{car.description}}</p>
+      <p><button @click="ToProfile()" >Bid Now</button></p>
+    </div>
+  </div>
 </template>
 
 
   <script>
-  import {BlogCard} from '@/components'
-    export default {
-        name: "ProductCard",
-        components: {
-            
-        },
-      data () {
-        return {
-          password: null,
-          firstname: null,
-          email: null
-        }
-      }
+export default {
+  name: "ProductCard",
+  components: {},
+
+  data() {
+    return {
+      password: null,
+      firstname: null,
+      email: null,
+      cars: [],
+    };
+  },
+  methods: {
+       ToProfile(){
+   this.$router.push({name:"profile"})
+    },
+  },
+  async mounted() {
+    try {
+      const data = await this.$store.dispatch("GET_ALL_CARS");
+      console.log('this is data ----------------',data)
+      this.cars = data;
+      console.log("this is the cars--------", this.cars);
+    } catch (error) {
+      console.log(error);
     }
-  </script>
+  },
+};
+</script>
 
 
 
 <style scoped>
-.cards{
-    display: grid;
-    grid-template-columns: auto auto auto;
-    padding: 100px;
-    margin: 200px;
+.cars {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 70px;
+  margin: 100px;
 }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -78,23 +57,24 @@
   margin: auto;
   text-align: center;
   font-family: arial;
+  border-radius: 12px
 }
 
 .price {
   color: grey;
   font-size: 22px;
 }
-
 .card button {
   border: none;
   outline: 0;
   padding: 12px;
   color: white;
-  background-color: #000;
+  background-color: green;
   text-align: center;
   cursor: pointer;
   width: 100%;
   font-size: 18px;
+  border-radius: 12px
 }
 
 .card button:hover {
