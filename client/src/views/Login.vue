@@ -1,31 +1,49 @@
 <template>
-  <div>
-      <h3>Sign In</h3>
-      <div class="form-group">
-        <label>Email address</label>
-        <input v-model="email" type="email" class="form-control form-control-lg" />
+  <div class="wrapper">
+    <div class="section page-header header-filter" :style="headerStyle">
+      <div class="container">
+        <div class="md-layout">
+          <div
+            class="md-layout-item md-size-33 md-small-size-66 md-xsmall-size-100 md-medium-size-40 mx-auto"
+          >
+            <login-card header-color="green">
+              <h4 slot="title" class="card-title">Login</h4>
+
+             
+              <md-field class="md-form-group" slot="inputs">
+                <md-icon>email</md-icon>
+                <label>Email...</label>
+                <md-input v-model="email" type="email"></md-input>
+              </md-field>
+              <md-field class="md-form-group" slot="inputs">
+                <md-icon>lock_outline</md-icon>
+                <label>Password...</label>
+                <md-input v-model="password" type="password"></md-input>
+              </md-field>
+              <md-button slot="footer" class="md-simple md-success md-lg" @click="login()">
+              Login
+              </md-button>
+            </login-card>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input v-model="password" type="password" class="form-control form-control-lg" />
-      </div>
-      <button @click="login()" type="submit" class="btn btn-dark btn-lg btn-block">
-        Sign In
-      </button>
-      <p class="forgot-password text-right mt-2 mb-4">
-        <router-link to="/forgot-password">Forgot password ?</router-link>
-      </p>
+    </div>
   </div>
 </template>
 
-
 <script>
+import { LoginCard } from "@/components";
+
 export default {
+  components: {
+    LoginCard,
+  },
+  bodyClass: "login-page",
   data() {
     return {
       email: "",
-      password: ""
-    }
+      password: "",
+    };
   },
   methods: {
     async login() {
@@ -37,8 +55,23 @@ export default {
       console.log(res)
     },
     ToAuction() {
-      this.$router.push({ name: "Auction" });
+      this.$router.push({ name: "index" });
     },
   },
-}
+  props: {
+    header: {
+      type: String,
+      default: require("@/assets/img/profile_city.jpg"),
+    },
+  },
+  computed: {
+    headerStyle() {
+      return {
+        backgroundImage: `url(${this.header})`,
+      };
+    },
+  },
+};
 </script>
+
+<style lang="css"></style>

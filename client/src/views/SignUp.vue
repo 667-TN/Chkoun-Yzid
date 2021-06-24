@@ -1,40 +1,53 @@
 <template>
-  <div>
-    <p class="h4 text-center mb-4">Sign up</p>
-    <label for="first_name" class="grey-text">First Name</label>
-    <input
-      v-model="first_name"
-      type="text"
-      id="first_name"
-      class="form-control"
-    />
-    <br />
-    <label for="last_name" class="grey-text">Last Name</label>
-    <input
-      v-model="last_name"
-      type="text"
-      id="last_name"
-      class="form-control"
-    />
-    <br />
-    <label for="email" class="grey-text">Email</label>
-    <input v-model="email" type="email" id="email" class="form-control" />
-    <br />
-    <label for="password" class="grey-text">Password</label>
-    <input
-      v-model="password"
-      type="password"
-      id="password"
-      class="form-control"
-    />
-    <div class="text-center mt-4">
-      <button class="btn btn-unique" @click="signup()">Register</button>
+  <div class="wrapper">
+    <div class="section page-header header-filter" :style="headerStyle">
+      <div class="container">
+        <div class="md-layout">
+          <div
+            class="md-layout-item md-size-33 md-small-size-66 md-xsmall-size-100 md-medium-size-40 mx-auto"
+          >
+            <login-card header-color="green">
+              <h4 slot="title" class="card-title">Sign up</h4>
+
+              <md-field class="md-form-group" slot="inputs">
+                <md-icon>face</md-icon>
+                <label>First Name...</label>
+                <md-input v-model="first_name"></md-input>
+              </md-field>
+              <md-field class="md-form-group" slot="inputs">
+                <md-icon>face</md-icon>
+                <label>Last Name...</label>
+                <md-input v-model="last_name"></md-input>
+              </md-field>
+              <md-field class="md-form-group" slot="inputs">
+                <md-icon>email</md-icon>
+                <label>Email...</label>
+                <md-input v-model="email" type="email"></md-input>
+              </md-field>
+              <md-field class="md-form-group" slot="inputs">
+                <md-icon>lock_outline</md-icon>
+                <label>Password...</label>
+                <md-input v-model="password" type="password"></md-input>
+              </md-field>
+              <md-button slot="footer" class="md-simple md-success md-lg" @click="signup()">
+               Register
+              </md-button>
+            </login-card>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { LoginCard } from "@/components";
+
 export default {
+  components: {
+    LoginCard,
+  },
+  bodyClass: "login-page",
   data() {
     return {
       first_name: "",
@@ -47,7 +60,7 @@ export default {
   },
   methods: {
     async signup() {
-      console.log(this.$store)
+      console.log(this.$store);
       await this.$store.dispatch("SIGNUP", {
         first_name: this.first_name,
         last_name: this.last_name,
@@ -58,5 +71,20 @@ export default {
       });
     },
   },
+  props: {
+    header: {
+      type: String,
+      default: require("@/assets/img/profile_city.jpg"),
+    },
+  },
+  computed: {
+    headerStyle() {
+      return {
+        backgroundImage: `url(${this.header})`,
+      };
+    },
+  },
 };
 </script>
+
+<style lang="css"></style>
