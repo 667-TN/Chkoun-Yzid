@@ -52,10 +52,11 @@
   export default {
     data() {
      return {
+       car : [],
        carousel: [
          {image: require("@/assets/img/nature-2.jpg"), title: 'Somewhere Beyond, United States'}
-       ]
-      }
+       ],
+       }
     },
   props: {
     header: {
@@ -73,7 +74,19 @@
         backgroundImage: `url(${this.header})`
       };
     }
-  }
+  },
+    async mounted() {
+    try {
+    const id = this.$route.params.id;
+      const data = await this.$store.dispatch("GET_A_CAR",id)
+      // console.log(data)
+      this.car = data
+
+       console.log("this is the car that you clicked on --------", this.car);
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };
 </script>
 

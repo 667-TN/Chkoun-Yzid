@@ -16,10 +16,13 @@ var selectAllCars = function (req, res) {
     }
   });
 };
+
+
+
 var selectOneCar = function(req, res) {
   let id = req.params.id
   let syntax = `SELECT * from Car WHERE id="${id}"`
-   db.query(syntax,(err, cars, fields)=> {
+   db.query(syntax,(err, cars)=> {
     if (err) {
       res.status(500).send(err);
     } else {
