@@ -23,7 +23,7 @@
 </div>
   <div>
     <md-toolbar  v-for="car in car" :key="car.id">
-      <h3 class="md-title">TimeLeft({{time}})</h3>
+      <h3 class="md-title">TimeLeft  ({{time}})</h3>
       <h3 class="md-title">nb of bids#{{car.nb_bids}}</h3>
       <h3 class="md-title">highest bid(12.000$)</h3>
     </md-toolbar>

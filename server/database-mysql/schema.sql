@@ -58,7 +58,7 @@ USE chkounyzid;
 --   PRIMARY KEY (id),
 --  FOREIGN KEY (car_id) REFERENCES Car(id),
 --  FOREIGN KEY (user_id) REFERENCES User(id)
--- );
+-- ); 
 
 
 
