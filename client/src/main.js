@@ -12,6 +12,7 @@ import MaterialKit from "./plugins/material-kit";
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
 Vue.use(MaterialKit);
+Vue.use(require('vue-moment'));
 
 
 const NavbarStore = {
