@@ -26,6 +26,7 @@
       <h3 class="md-title">TimeLeft({{time}})</h3>
       <h3 class="md-title">nb of bids#{{car.nb_bids}}</h3>
       <h3 class="md-title">highest bid(12.000$)</h3>
+      <button>Place Bid</button>
     </md-toolbar>
   </div>
 
@@ -60,6 +61,8 @@
 </template>
 
 <script>
+
+
 
   export default {
     data() {
