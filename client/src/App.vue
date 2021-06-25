@@ -1,4 +1,5 @@
 <template>
+
   <div id="material-kit">
     <div :class="{ 'nav-open': NavbarStore.showNavbar }">
       <router-view name="header" />

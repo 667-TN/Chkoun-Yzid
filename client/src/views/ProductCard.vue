@@ -1,32 +1,38 @@
 <template>
   <div class="cars">
     <div class="card" v-for="(car) in cars" :key="car.id">
-      <img :src="car.url" alt="Denim Jeans" style="width: 100%" />
+      <img :src="car.url" style="width: 100%" />
       <h3 class="title">{{car.car_name}}</h3>
       <p class="price">{{car.car_price}}</p>
       <p class="description">{{car.description}}</p>
-      <p><button>Bide Now</button></p>
+      <p><router-link  :to="''+car.id" >Bid Now</router-link></p>
     </div>
+    
   </div>
 </template>
+
 
 
   <script>
 export default {
   name: "ProductCard",
   components: {},
+
   data() {
     return {
-      password: null,
-      firstname: null,
-      email: null,
       cars: [],
     };
   },
+
+  methods : {},
+  // methods: {
+  //      ToProfile(id){
+  //        console.log(id)
+  //  this.$router.push({name:`profile/${id}`})
+  //   },
   async mounted() {
     try {
       const data = await this.$store.dispatch("GET_ALL_CARS");
-      console.log('this is data ----------------',data)
       this.cars = data;
       console.log("this is the cars--------", this.cars);
     } catch (error) {
@@ -42,8 +48,8 @@ export default {
 .cars {
   display: grid;
   grid-template-columns: auto auto auto;
-  padding: 100px;
-  margin: 200px;
+  padding: 70px;
+  margin: 100px;
 }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -58,7 +64,6 @@ export default {
   color: grey;
   font-size: 22px;
 }
-
 .card button {
   border: none;
   outline: 0;
@@ -74,5 +79,9 @@ export default {
 
 .card button:hover {
   opacity: 0.7;
+}
+
+#btn {
+  background-color: #006400;
 }
 </style>

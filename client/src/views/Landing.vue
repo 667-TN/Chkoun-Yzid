@@ -13,7 +13,7 @@
       </div>
     </parallax>
     <div>
-      <ProductCard />
+      <ProductCard  />
     </div>
   </div>
 </template>
@@ -62,12 +62,11 @@ export default {
   },
   data() {
     return {
-      firstname: null,
-      email: null,
-      password: null,
+    
     };
   },
   methods: {
+ 
     leafActive() {
       if (window.innerWidth < 768) {
         this.leafShow = false;
@@ -88,13 +87,7 @@ export default {
       };
     },
   },
-  mounted() {
-    this.leafActive();
-    window.addEventListener("resize", this.leafActive);
-  },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.leafActive);
-  },
+
 };
 </script>
 
