@@ -5,6 +5,7 @@ import router from "./router";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import store from "./store";
+import VueSimpleAlert from "vue-simple-alert";
 
 
 import MaterialKit from "./plugins/material-kit";
@@ -13,6 +14,7 @@ Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
 Vue.use(MaterialKit);
 Vue.use(require('vue-moment'));
+Vue.use(VueSimpleAlert);
 
 
 const NavbarStore = {
