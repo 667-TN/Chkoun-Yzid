@@ -45,8 +45,8 @@ USE chkounyzid;
 --   car_id INT NOT NULL,
 --   user_id INT NOT NULL,
 --   PRIMARY KEY (id),
---     FOREIGN KEY (car_id) REFERENCES Car(id),
---     FOREIGN KEY (user_id) REFERENCES User(id)
+--    FOREIGN KEY (car_id) REFERENCES Car(id),
+--    FOREIGN KEY (user_id) REFERENCES User(id)
 -- );
 
 -- CREATE TABLE QuestionAndAnswers (

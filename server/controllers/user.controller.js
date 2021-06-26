@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 module.exports.login = (req, res) => {
+
   const { email, password } = req.body
   let queryStr = `SELECT * from User where email="${email}"`
   db.query(queryStr, async (err, results) => {
