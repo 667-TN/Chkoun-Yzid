@@ -21,7 +21,7 @@ USE chkounyzid;
 --   id INT NOT NULL AUTO_INCREMENT,
 --   car_name VARCHAR(45) NOT NULL,
 --   start_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP  NOT NULL,
---   end_date TIMESTAMP  NOT NULL,
+--   end_date TIMESTAMP   NOT NULL,
 --   car_price VARCHAR(45)NOT NULL,
 --   location VARCHAR(45) NOT NULL,
 --   user_id INT NOT NULL,

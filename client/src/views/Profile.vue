@@ -28,8 +28,8 @@
         <md-toolbar v-for="car in car" :key="car.id">
           <h3 class="md-title">TimeLeft ({{ time }})</h3>
           <h3 class="md-title">nb of bids#{{ car.nb_bids }}</h3>
-          <h3 class="md-title">highest bid({{car.car_price}})</h3>
-          <button @click="addBid()">Bid now !!</button>
+          <h3 class="md-title">highest bid({{car.car_price}})</h3> 
+          <md-button class="md-raised md-primary" @click="addBid()">Place Bid</md-button>
         </md-toolbar>
       </div>
 
@@ -94,7 +94,7 @@ export default {
           this.$store.state.cars.currentCar[0].nb_bids++
         }
         else{
-          console.log('zid choiya')
+          this.$alert("Please insert a bid bigger than the last price!! (example: 50000)");
         }
       });
     },
