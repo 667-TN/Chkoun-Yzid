@@ -1,14 +1,16 @@
 <template>
   <div class="cars">
     <div class="card" v-for="(car) in cars" :key="car.id">
-      <img :src="car.url" alt="Denim Jeans" style="width: 100%" />
+      <img :src="car.url" style="width: 100%" />
       <h3 class="title">{{car.car_name}}</h3>
       <p class="price">{{car.car_price}}</p>
       <p class="description">{{car.description}}</p>
-      <p><button @click="ToProfile()" >Bid Now</button></p>
+      <p><router-link  :to="''+car.id" >Bid Now</router-link></p>
     </div>
+    
   </div>
 </template>
+
 
 
   <script>
@@ -18,21 +20,19 @@ export default {
 
   data() {
     return {
-      password: null,
-      firstname: null,
-      email: null,
       cars: [],
     };
   },
-  methods: {
-       ToProfile(){
-   this.$router.push({name:"profile"})
-    },
-  },
+
+  methods : {},
+  // methods: {
+  //      ToProfile(id){
+  //        console.log(id)
+  //  this.$router.push({name:`profile/${id}`})
+  //   },
   async mounted() {
     try {
       const data = await this.$store.dispatch("GET_ALL_CARS");
-      console.log('this is data ----------------',data)
       this.cars = data;
       console.log("this is the cars--------", this.cars);
     } catch (error) {
@@ -79,5 +79,9 @@ export default {
 
 .card button:hover {
   opacity: 0.7;
+}
+
+#btn {
+  background-color: #006400;
 }
 </style>
