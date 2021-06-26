@@ -53,7 +53,7 @@
       </div>
       <div class="section text-center">
         <div class="container">
-          <h2 class="title">Here is our team</h2>
+          <h2 class="title">Here is Our Collaborator</h2>
           <div class="team">
             <div class="md-layout">
               <div class="md-layout-item md-medium-size-33 md-small-size-100">
