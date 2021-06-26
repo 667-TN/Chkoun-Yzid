@@ -7,6 +7,12 @@
             <div class="brand">
               <h1>See All Auctions Here</h1>
               <h3>Bid on the car that you want</h3>
+                 <br />
+            <md-button
+              @click="ToForm()"
+              class="md-success md-lg"
+              ><i class="fas fa-clipboard"></i>Post Your Car Here</md-button
+            >           
             </div>
           </div>
         </div>
@@ -20,9 +26,11 @@
 
 <script>
 import ProductCard from "./ProductCard.vue";
+// import Modal from '../components/Modal.vue';
 export default {
   components: {
     ProductCard,
+    // Modal,
   },
   name: "index",
   bodyClass: "index-page",
@@ -66,7 +74,9 @@ export default {
     };
   },
   methods: {
- 
+    ToForm() {
+      this.$router.push({ name: "form" });
+    },
     leafActive() {
       if (window.innerWidth < 768) {
         this.leafShow = false;
