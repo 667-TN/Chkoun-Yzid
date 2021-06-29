@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+
     <parallax class="page-header header-filter" :style="headerStyle">
       <div class="md-layout">
         <div class="md-layout-item">
@@ -13,6 +14,7 @@
               class="md-success md-lg"
               ><i class="fas fa-clipboard"></i>Post Your Car Here</md-button
             >           
+
             </div>
           </div>
         </div>
