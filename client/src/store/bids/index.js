@@ -32,6 +32,17 @@ const bids ={
                         reject(error)
                     })
             })
+        },
+        GET_ALL_BIDS: async ({ commit }) => {
+            return new Promise((resolve, reject) => {
+                axios.get('http://localhost:8000/api/bid').then(({ data }) => {
+                    commit("SET_BIDS", data)
+                    resolve(data)
+                })
+                    .catch(error => {
+                        reject(error)
+                    })
+            })
         }
     }
 }
