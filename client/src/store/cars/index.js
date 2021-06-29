@@ -3,7 +3,7 @@ import axios from "axios"
 const cars = {
     state: () => ({
         cars: [],
-        
+
         currentCar: null
     }),
     getters: {
@@ -76,6 +76,7 @@ const cars = {
                     .catch(error => {
                         reject(error)
                     })
+                    
             }) 
         },
         GET_A_CAR: async ({commit}, id) => {

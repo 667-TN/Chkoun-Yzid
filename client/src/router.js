@@ -7,6 +7,7 @@ import Profile from "./views/Profile.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 import Signup from './views/SignUp.vue'
+import Form from './views/Form.vue'
 
 Vue.use(Router);
 
@@ -60,6 +61,15 @@ export default new Router({
       path: "/:id",
       name: "/id",
       components: { default: Profile, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
+    },
+    {
+      path: "/form",
+      name: "form",
+      components: { default: Form, header: MainNavbar, footer: MainFooter },
       props: {
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
