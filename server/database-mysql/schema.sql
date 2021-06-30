@@ -20,9 +20,11 @@ USE chkounyzid;
 -- CREATE TABLE Car (
 --   id INT NOT NULL AUTO_INCREMENT,
 --   car_name VARCHAR(45) NOT NULL,
+
 --   start_date TIMESTAMP DEFAULT NOW()  NOT NULL,
 --   end_date  TIMESTAMP DEFAULT (NOW()+ INTERVAL 7 DAY)  NOT NULL,
 --   car_price INT NOT NULL,
+
 --   location VARCHAR(45) NOT NULL,
 --   user_id INT NOT NULL,
 --   url VARCHAR(255) NOT NULL, 

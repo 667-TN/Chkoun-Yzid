@@ -32,9 +32,12 @@ var selectOneCar = function(req, res) {
 };
 
 var addACar = function(req,res){
+
   const { car_name, car_price, location, user_id, url  , make , model , VIN , description , mileage , transimission } = req.body;
   const params =[car_name, car_price, location, user_id, url , make , model , VIN , description , mileage , transimission];
   let syntax = `INSERT INTO Car (car_name, car_price, location, user_id, url , make , model , VIN , description , mileage , transimission) VALUES (?,?,?,?,?,?,?,?,?,?,?);`
+
+
   db.query(syntax, params, (err, car) => {
     if (err) {
       res.status(500).send(err);
