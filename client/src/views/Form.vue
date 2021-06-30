@@ -5,89 +5,131 @@
         <div class="md-layout-item">
           <div class="image-wrapper">
             <div class="brand">
-              <h1>Post Your Car Here</h1>       
+              <h1>Post Your Car Here</h1>
             </div>
           </div>
         </div>
       </div>
     </parallax>
-    <div class="container">  
-  <form id="contact" action="" method="post">
-    <fieldset>
-        <label>Car Name</label>
-      <input placeholder="Car Name" type="text" tabindex="1" required autofocus v-model="car_name"> 
-    </fieldset>
-    <fieldset>
-        <label>Starter Price</label>
-      <input placeholder="$1,000" type="Text" tabindex="2" required v-modal="car_price">
-    </fieldset>
-    <fieldset>
-        <label>Location</label>
-      <input placeholder="Location" type="Text" tabindex="3" required v-model="location">
-    </fieldset>
-    <fieldset>
-        <label>Brand</label>
-      <input placeholder="Brand" type="text"  tabindex="5" required v-model="make">
-    </fieldset>
-    <fieldset>
-        <label>Model</label>
-        <input placeholder="Model" type="text" tabindex="6" required v-model="model">
-    </fieldset>
-      <fieldset>
+    <div class="container">
+      <form id="contact" action="" method="post">
+        <fieldset>
+          <label>Car Name</label>
+          <input
+            placeholder="Car Name"
+            type="text"
+            tabindex="1"
+            required
+            autofocus
+            v-model="car_name"
+          />
+        </fieldset>
+        <fieldset>
+          <label>Starter Price</label>
+          <input
+            placeholder="$1,000"
+            type="Text"
+            tabindex="2"
+            required
+            v-modal="car_price"
+          />
+        </fieldset>
+        <fieldset>
+          <label>Location</label>
+          <input
+            placeholder="Location"
+            type="Text"
+            tabindex="3"
+            required
+            v-model="location"
+          />
+        </fieldset>
+        <fieldset>
+          <label>Brand</label>
+          <input
+            placeholder="Brand"
+            type="text"
+            tabindex="5"
+            required
+            v-model="make"
+          />
+        </fieldset>
+        <fieldset>
+          <label>Model</label>
+          <input
+            placeholder="Model"
+            type="text"
+            tabindex="6"
+            required
+            v-model="model"
+          />
+        </fieldset>
+        <fieldset>
           <label>Mileage</label>
-        <input placeholder="Mileage" type="number" tabindex="7" required v-model="mileage">
-    </fieldset>
-      <fieldset>
+          <input
+            placeholder="Mileage"
+            type="number"
+            tabindex="7"
+            required
+            v-model="mileage"
+          />
+        </fieldset>
+        <fieldset>
           <label>Transmision</label>
-      <input placeholder="AUTO OR MANUAL" type="text" tabindex="8" required v-model="transimision">    
-    </fieldset>
-    <fieldset>
-        <label>VIN</label>
-        <input placeholder="VIN" type="text" tabindex="9" required v-model="VIN">
-    </fieldset>
-    <fieldset>
-        <label>Transmision</label>
-      <input type="file" @change="onFileSelected"  tabindex="10" required>
-    </fieldset>
-    <fieldset>
-        <label>Transmision</label>
-        <textarea placeholder="Description..." v-model="description"></textarea>
-    </fieldset>
-    <fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending" @click="onUplaod">Submit</button>
-    </fieldset>
-  </form>
-</div>
+          <input
+            placeholder="AUTO OR MANUAL"
+            type="text"
+            tabindex="8"
+            required
+            v-model="transimision"
+          />
+        </fieldset>
+        <fieldset>
+          <label>VIN</label>
+          <input
+            placeholder="VIN"
+            type="text"
+            tabindex="9"
+            required
+            v-model="VIN"
+          />
+        </fieldset>
+        <fieldset>
+          <label>Transmision</label>
+          <input type="file" @change="onFileSelected" tabindex="10" required />
+        </fieldset>
+        <fieldset>
+          <label>Transmision</label>
+          <textarea
+            placeholder="Description..."
+            v-model="description"
+          ></textarea>
+        </fieldset>
+        <fieldset>
+          <button
+            name="submit"
+            type="submit"
+            id="contact-submit"
+            data-submit="...Sending"
+            @click="onUplaod"
+          >
+            Submit
+          </button>
+        </fieldset>
+      </form>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  components: {
- 
-  },
+  components: {},
   name: "form",
   bodyClass: "index-page",
   props: {
     image: {
       type: String,
       default: require("@/assets/img/vue-mk-header.jpg"),
-    },
-    leaf4: {
-      type: String,
-      default: require("@/assets/img/leaf4.png"),
-    },
-    leaf3: {
-      type: String,
-      default: require("@/assets/img/leaf3.png"),
-    },
-    leaf2: {
-      type: String,
-      default: require("@/assets/img/leaf2.png"),
-    },
-    leaf1: {
-      type: String,
-      default: require("@/assets/img/leaf1.png"),
     },
     signup: {
       type: String,
@@ -104,43 +146,32 @@ export default {
   },
   data() {
     return {
-    selectedFile:null
+      selectedFile: null,
     };
   },
   methods: {
-    onFileSelected(event){
-       this.selectedFile = event.target.files[0]
+    onFileSelected(event) {
+      this.selectedFile = event.target.files[0];
     },
-    onUpload(){
+    onUpload() {},
 
-    },
-    leafActive() {
-      if (window.innerWidth < 768) {
-        this.leafShow = false;
-      } else {
-        this.leafShow = true;
-      }
+    computed: {
+      headerStyle() {
+        return {
+          backgroundImage: `url(${this.image})`,
+        };
+      },
+      signupImage() {
+        return {
+          backgroundImage: `url(${this.signup})`,
+        };
+      },
     },
   },
-  computed: {
-    headerStyle() {
-      return {
-        backgroundImage: `url(${this.image})`,
-      };
-    },
-    signupImage() {
-      return {
-        backgroundImage: `url(${this.signup})`,
-      };
-    },
-  },
-
 };
 </script>
 
-
-
-<style lang="scss" >
+<style lang="scss">
 .section-download {
   .md-button + .md-button {
     margin-left: 5px;
@@ -191,7 +222,7 @@ body {
 }
 
 #contact {
-  background: #F9F9F9;
+  background: #f9f9f9;
   padding: 25px;
   margin: 150px 0;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -226,7 +257,7 @@ fieldset {
 #contact textarea {
   width: 100%;
   border: 1px solid #ccc;
-  background: #FFF;
+  background: #fff;
   margin: 0 0 5px;
   padding: 10px;
 }
@@ -252,15 +283,15 @@ fieldset {
   cursor: pointer;
   width: 100%;
   border: none;
-  background: #4CAF50;
-  color: #FFF;
+  background: #4caf50;
+  color: #fff;
   margin: 0 0 5px;
   padding: 10px;
   font-size: 15px;
 }
 
 #contact button[type="submit"]:hover {
-  background: #43A047;
+  background: #43a047;
   -webkit-transition: background 0.3s ease-in-out;
   -moz-transition: background 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
@@ -296,8 +327,7 @@ fieldset {
   color: #888;
 }
 
- .md-checkbox {
-    display: flex;
-  }
-
+.md-checkbox {
+  display: flex;
+}
 </style>
