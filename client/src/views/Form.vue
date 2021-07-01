@@ -12,7 +12,7 @@
       </div>
     </parallax>
     <div class="container">
-      <form id="contact" action="" method="post">
+    <form class="contact">
         <fieldset>
           <label>Car Name</label>
           <input
@@ -20,7 +20,6 @@
             type="text"
             tabindex="1"
             required
-            autofocus
             v-model="car_name"
           />
         </fieldset>
@@ -28,10 +27,10 @@
           <label>Starter Price</label>
           <input
             placeholder="$1,000"
-            type="Text"
+            type="number"
             tabindex="2"
             required
-            v-modal="car_price"
+            v-model="car_price"
           />
         </fieldset>
         <fieldset>
@@ -81,7 +80,7 @@
             type="text"
             tabindex="8"
             required
-            v-model="transimision"
+            v-model="transimission"
           />
         </fieldset>
         <fieldset>
@@ -95,11 +94,11 @@
           />
         </fieldset>
         <fieldset>
-          <label>Transmision</label>
-          <input type="file" @change="onFileSelected" tabindex="10" required />
+          <label>Image</label>
+          <input type="file" tabindex="10" required />
         </fieldset>
         <fieldset>
-          <label>Transmision</label>
+          <label>Description</label>
           <textarea
             placeholder="Description..."
             v-model="description"
@@ -107,16 +106,12 @@
         </fieldset>
         <fieldset>
           <button
-            name="submit"
-            type="submit"
-            id="contact-submit"
-            data-submit="...Sending"
-            @click="onUplaod"
+            @click="addCar()"
           >
             Submit
           </button>
         </fieldset>
-      </form>
+    </form>
     </div>
   </div>
 </template>
@@ -146,15 +141,44 @@ export default {
   },
   data() {
     return {
-      selectedFile: null,
+      car_name: "",
+      car_price: null,
+      location: "",
+      user_id: null,
+      url: "",
+      make: "",
+      model: "",
+      VIN: "",
+      description: "",
+      mileage: null,
+      transimission: "",
     };
   },
   methods: {
-    onFileSelected(event) {
-      this.selectedFile = event.target.files[0];
+    
+    async addCar() {
+      const res = await this.$store.dispatch("VERIFY_AUTH")
+      console.log(this.$store);
+     console.log(this.car_price)
+      await this.$store.dispatch("ADD_A_CAR", {
+        car_name: this.car_name,
+        car_price: this.car_price,
+        location: this.location,
+        user_id: res.user.id,
+        url: this.url,
+        make: this.make,
+        model: this.model,
+        VIN: this.VIN,
+        description: this.description,
+        mileage: this.mileage,
+        transimission: this.transimission
+      });
+      this.ToAuction();
     },
-    onUpload() {},
-
+    ToAuction() {
+      this.$router.push({ name: "index" });
+    },
+  },
     computed: {
       headerStyle() {
         return {
@@ -167,11 +191,12 @@ export default {
         };
       },
     },
-  },
+ 
 };
 </script>
 
 <style lang="scss">
+
 .section-download {
   .md-button + .md-button {
     margin-left: 5px;
@@ -212,30 +237,30 @@ body {
   position: relative;
 }
 
-#contact input[type="text"],
-#contact input[type="email"],
-#contact input[type="tel"],
-#contact input[type="url"],
-#contact textarea,
-#contact button[type="submit"] {
+.contact input[type="text"],
+.contact input[type="email"],
+.contact input[type="tel"],
+.contact input[type="url"],
+.contact textarea,
+.contact button[type="submit"] {
   font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
 }
 
-#contact {
+.contact {
   background: #f9f9f9;
   padding: 25px;
   margin: 150px 0;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-#contact h3 {
+.contact h3 {
   display: block;
   font-size: 30px;
   font-weight: 300;
   margin-bottom: 10px;
 }
 
-#contact h4 {
+.contact h4 {
   margin: 5px 0 15px;
   display: block;
   font-size: 13px;
@@ -250,11 +275,11 @@ fieldset {
   width: 100%;
 }
 
-#contact input[type="text"],
-#contact input[type="email"],
-#contact input[type="tel"],
-#contact input[type="url"],
-#contact textarea {
+.contact input[type="text"],
+.contact input[type="email"],
+.contact input[type="tel"],
+.contact input[type="url"],
+.contact textarea {
   width: 100%;
   border: 1px solid #ccc;
   background: #fff;
@@ -262,42 +287,42 @@ fieldset {
   padding: 10px;
 }
 
-#contact input[type="text"]:hover,
-#contact input[type="email"]:hover,
-#contact input[type="tel"]:hover,
-#contact input[type="url"]:hover,
-#contact textarea:hover {
+.contact input[type="text"]:hover,
+.contact input[type="email"]:hover,
+.contact input[type="tel"]:hover,
+.contact input[type="url"]:hover,
+.contact textarea:hover {
   -webkit-transition: border-color 0.3s ease-in-out;
   -moz-transition: border-color 0.3s ease-in-out;
   transition: border-color 0.3s ease-in-out;
   border: 1px solid #aaa;
 }
 
-#contact textarea {
+.contact textarea {
   height: 100px;
   max-width: 100%;
   resize: none;
 }
 
-#contact button[type="submit"] {
+.contact button[type="submit"] {
   cursor: pointer;
   width: 100%;
   border: none;
   background: #4caf50;
-  color: #fff;
+  color: rgb(160, 133, 133);
   margin: 0 0 5px;
   padding: 10px;
   font-size: 15px;
 }
 
-#contact button[type="submit"]:hover {
+.contact button[type="submit"]:hover {
   background: #43a047;
   -webkit-transition: background 0.3s ease-in-out;
   -moz-transition: background 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
 }
 
-#contact button[type="submit"]:active {
+.contact button[type="submit"]:active {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
@@ -305,8 +330,8 @@ fieldset {
   text-align: center;
 }
 
-#contact input:focus,
-#contact textarea:focus {
+.contact input:focus,
+.contact textarea:focus {
   outline: 0;
   border: 1px solid #aaa;
 }
