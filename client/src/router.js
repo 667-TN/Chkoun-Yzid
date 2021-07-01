@@ -9,6 +9,7 @@ import MainFooter from "./layout/MainFooter.vue";
 import Signup from "./views/Signup.vue";
 import Form from "./views/Form.vue";
 
+
 Vue.use(Router);
 
 export default new Router({
