@@ -8,7 +8,8 @@ import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 import Form from "./views/Form.vue";
 import Admin from "./views/Admin.vue";
-import Signup from './views/SignUp.vue'
+import Signup from './views/SignUp.vue';
+
 
 
 Vue.use(Router);
@@ -87,6 +88,16 @@ export default new Router({
         footer: { backgroundColor: "black" }
       }
     },
+
+    //   {
+    //     path: "/admin/cars/:id/edit",
+    //     name: "AdminCarsEdit",
+    //     components: { default: AdminCarsEdit, header: MainNavbar, footer: MainFooter },
+    //     props: {
+    //       header: { colorOnScroll: 400 },
+    //       footer: { backgroundColor: "black" }
+    //     }
+    // },
 
   ],
   scrollBehavior: to => {
