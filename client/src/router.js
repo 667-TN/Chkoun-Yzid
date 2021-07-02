@@ -6,7 +6,7 @@ import Login from "./views/Login.vue";
 import Profile from "./views/Profile.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
-import Signup from "./views/Signup.vue";
+import Signup from "./views/SignUp.vue";
 import Form from "./views/Form.vue";
 
 
