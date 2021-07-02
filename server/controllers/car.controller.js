@@ -32,16 +32,20 @@ var selectOneCar = function(req, res) {
 };
 
 var addACar = function(req,res){
-  const { car_name, car_price, location, user_id, url , status , nb_bids , make , model , VIN , description , mileage , transimission } = req.body;
-  const params =[car_name, car_price, location, user_id, url , status , nb_bids , make , model , VIN , description , mileage , transimission];
 
-  let syntax = "INSERT into Car (car_name, car_price, location, user_id, url , status , nb_bids , make , model , VIN , description , mileage , transimission) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+  const { car_name, car_price, location, user_id, url  , make , model , VIN , description , mileage , transimission } = req.body;
+  console.log("body",req.body)
+  const params =[car_name, car_price, location, user_id, url , make , model , VIN , description , mileage , transimission];
+  let syntax = `INSERT INTO Car (car_name, car_price, location, user_id, url , make , model , VIN , description , mileage , transimission) VALUES (?,?,?,?,?,?,?,?,?,?,?);`
+
 
   db.query(syntax, params, (err, car) => {
     if (err) {
       res.status(500).send(err);
+      console.log("error post car:", err)
     } else {
       res.status(200).send(car);
+      console.log("posted:", car)
     }
   });
 }

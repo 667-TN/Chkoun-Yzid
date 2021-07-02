@@ -6,9 +6,10 @@ import Login from "./views/Login.vue";
 import Profile from "./views/Profile.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
+import Form from "./views/Form.vue";
+import Admin from "./views/Admin.vue";
 import Signup from './views/SignUp.vue'
-import Form from './views/Form.vue'
-import Admin from "./views/Admin.vue"
+
 
 Vue.use(Router);
 
