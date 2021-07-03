@@ -18,6 +18,13 @@
                   <p>About Us </p>
                 </md-list-item>
               </li>
+
+                  <li class="md-list-item">
+                <md-list-item to="/admin/cars">
+                  <p>Profile</p>
+                </md-list-item>
+              </li>
+
       <div class="md-toolbar-section-end">
         <div class="md-collapse">
           <div class="md-collapse-wrapper">

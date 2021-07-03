@@ -218,7 +218,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   -o-font-smoothing: antialiased;
-  font-smoothing: antialiased;
+  -font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 

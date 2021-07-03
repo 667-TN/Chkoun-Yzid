@@ -32,7 +32,6 @@
           <md-button class="md-raised md-primary" @click="addBid()">Place Bid</md-button>
         </md-toolbar>
       </div>
-
       <div>
         <md-table>
           <md-table-row>
@@ -43,8 +42,8 @@
             <md-table-head>Transimission</md-table-head>
             <md-table-head>Mileage</md-table-head>
           </md-table-row>
+          <md-table-row v-for="car in car" :key="car.id">
 
-          <md-table-row >
             <md-table-cell>{{ car.make }}</md-table-cell>
             <md-table-cell>{{ car.model }}</md-table-cell>
             <md-table-cell>{{ car.VIN }}</md-table-cell>
@@ -57,7 +56,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import Countdown from 'vuejs-countdown'
 
@@ -130,27 +128,22 @@ export default {
   },
 };
 </script>
-
 <style lang="scss" scoped>
 .section {
   padding: 0;
 }
-
 .profile-tabs::v-deep {
   .md-card-tabs .md-list {
     justify-content: center;
   }
-
   [class*="tab-pane-"] {
     margin-top: 3.213rem;
     padding-bottom: 50px;
-
     img {
       margin-bottom: 2.142rem;
     }
   }
 }
-
 .addBidButton {
   background-color: black;
 }

@@ -1,66 +1,64 @@
 
 
--- DROP DATABASE IF EXISTS chkounyzid;
+DROP DATABASE IF EXISTS chkounyzid;
 
--- CREATE DATABASE chkounyzid;
+CREATE DATABASE chkounyzid;
 
 USE chkounyzid;
 
--- CREATE TABLE User (
---   id INT NOT NULL AUTO_INCREMENT,
---   first_name VARCHAR(45) NOT NULL,
---   last_name VARCHAR(45) NOT NULL,
---   front_id_img VARCHAR(255) NOT NULL,
---   back_id_img VARCHAR(255) NOT NULL,
---   email VARCHAR(45) NOT NULL,
---   password VARCHAR(255) NOT NULL,
---   PRIMARY KEY (id)
--- );
+CREATE TABLE User (
+  id INT NOT NULL AUTO_INCREMENT,
+  first_name VARCHAR(45) NOT NULL,
+  last_name VARCHAR(45) NOT NULL,
+  front_id_img VARCHAR(255) NOT NULL,
+  back_id_img VARCHAR(255) NOT NULL,
+  email VARCHAR(45) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  PRIMARY KEY (id),
+);
 
--- CREATE TABLE Car (
---   id INT NOT NULL AUTO_INCREMENT,
---   car_name VARCHAR(45) NOT NULL,
+CREATE TABLE Car (
+  id INT NOT NULL AUTO_INCREMENT,
+  car_name VARCHAR(45) NOT NULL,
+  start_date TIMESTAMP DEFAULT NOW()  NOT NULL,
+  end_date  TIMESTAMP DEFAULT (NOW()+ INTERVAL 7 DAY)  NOT NULL,
+  car_price INT NOT NULL,
+  location VARCHAR(45) NOT NULL,
+  user_id INT NOT NULL,
+  url VARCHAR(255) NOT NULL, 
+  status VARCHAR(45) DEFAULT "Availble" NOT NULL,
+  nb_bids VARCHAR(45) DEFAULT 0 NOT NULL,
+  make VARCHAR(45) NOT NULL,
+  model VARCHAR(45) NOT NULL,
+  VIN VARCHAR(45) NOT NULL,
+  description VARCHAR(255) NOT NULL,
+  mileage INT NOT NULL,
+  transimission VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES User(id),
+);
 
---   start_date TIMESTAMP DEFAULT NOW()  NOT NULL,
---   end_date  TIMESTAMP DEFAULT (NOW()+ INTERVAL 7 DAY)  NOT NULL,
---   car_price INT NOT NULL,
+CREATE TABLE Bid (
+  id INT NOT NULL AUTO_INCREMENT,
+  amount INT NOT NULL,
+  time_stamp VARCHAR(45) NOT NULL,
+  car_id INT NOT NULL,
+  user_id INT NOT NULL,
+  PRIMARY KEY (id),
+   FOREIGN KEY (car_id) REFERENCES Car(id),
+   FOREIGN KEY (user_id) REFERENCES User(id),
+);
 
---   location VARCHAR(45) NOT NULL,
---   user_id INT NOT NULL,
---   url VARCHAR(255) NOT NULL, 
---   status VARCHAR(45) DEFAULT "Availble" NOT NULL,
---   nb_bids VARCHAR(45) DEFAULT 0 NOT NULL,
---   make VARCHAR(45) NOT NULL,
---   model VARCHAR(45) NOT NULL,
---   VIN VARCHAR(45) NOT NULL,
---   description VARCHAR(255) NOT NULL,
---   mileage INT NOT NULL,
---   transimission VARCHAR(45) NOT NULL,
---   PRIMARY KEY (id),
---   FOREIGN KEY (user_id) REFERENCES User(id)
--- );
-
--- CREATE TABLE Bid (
---   id INT NOT NULL AUTO_INCREMENT,
---   amount INT NOT NULL,
---   time_stamp VARCHAR(45) NOT NULL,
---   car_id INT NOT NULL,
---   user_id INT NOT NULL,
---   PRIMARY KEY (id),
---     FOREIGN KEY (car_id) REFERENCES Car(id),
---     FOREIGN KEY (user_id) REFERENCES User(id)
--- );
-
--- CREATE TABLE QuestionAndAnswers (
---   id INT NOT NULL AUTO_INCREMENT,
---   question VARCHAR(45) NOT NULL,
---   answer VARCHAR(45) NOT NULL,
---   car_id INT NOT NULL,
---   user_id INT NOT NULL,
---   PRIMARY KEY (id),
---  FOREIGN KEY (car_id) REFERENCES Car(id),
---  FOREIGN KEY (user_id) REFERENCES User(id)
--- ); 
+CREATE TABLE QuestionAndAnswers (
+  id INT NOT NULL AUTO_INCREMENT,
+  question VARCHAR(45) NOT NULL,
+  answer VARCHAR(45) NOT NULL,
+  car_id INT NOT NULL,
+  user_id INT NOT NULL,
+  PRIMARY KEY (id),
+ FOREIGN KEY (car_id) REFERENCES Car(id),
+ FOREIGN KEY (user_id) REFERENCES User(id),
+); 
 
 
 
