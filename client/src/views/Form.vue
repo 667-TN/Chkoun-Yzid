@@ -12,7 +12,7 @@
       </div>
     </parallax>
     <div class="container">
-    <form class="contact">
+      <form class="contact">
         <fieldset>
           <label>Car Name</label>
           <input
@@ -95,7 +95,7 @@
         </fieldset>
         <fieldset>
           <label>Image</label>
-          <input type="file" tabindex="10" required />
+          <input type="file" tabindex="10"  required />
         </fieldset>
         <fieldset>
           <label>Description</label>
@@ -105,18 +105,17 @@
           ></textarea>
         </fieldset>
         <fieldset>
-          <button
-            @click="addCar()"
-          >
+          <button @click="addCar()">
             Submit
           </button>
         </fieldset>
-    </form>
+      </form>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   components: {},
   name: "form",
@@ -124,20 +123,20 @@ export default {
   props: {
     image: {
       type: String,
-      default: require("@/assets/img/vue-mk-header.jpg"),
+      default: require("@/assets/img/vue-mk-header.jpg")
     },
     signup: {
       type: String,
-      default: require("@/assets/img/city.jpg"),
+      default: require("@/assets/img/city.jpg")
     },
     landing: {
       type: String,
-      default: require("@/assets/img/landing.jpg"),
+      default: require("@/assets/img/landing.jpg")
     },
     profile: {
       type: String,
-      default: require("@/assets/img/profile.jpg"),
-    },
+      default: require("@/assets/img/profile.jpg")
+    }
   },
   data() {
     return {
@@ -151,15 +150,15 @@ export default {
       VIN: "",
       description: "",
       mileage: null,
-      transimission: "",
+      transimission: ""
     };
   },
   methods: {
-    
+   
     async addCar() {
-      const res = await this.$store.dispatch("VERIFY_AUTH")
+      const res = await this.$store.dispatch("VERIFY_AUTH");
       console.log(this.$store);
-     console.log(this.car_price)
+      console.log(this.car_price);
       await this.$store.dispatch("ADD_A_CAR", {
         car_name: this.car_name,
         car_price: this.car_price,
@@ -174,29 +173,29 @@ export default {
         transimission: this.transimission
       });
       this.ToAuction();
+     
+      
     },
     ToAuction() {
       this.$router.push({ name: "index" });
-    },
+    }
   },
-    computed: {
-      headerStyle() {
-        return {
-          backgroundImage: `url(${this.image})`,
-        };
-      },
-      signupImage() {
-        return {
-          backgroundImage: `url(${this.signup})`,
-        };
-      },
+  computed: {
+    headerStyle() {
+      return {
+        backgroundImage: `url(${this.image})`
+      };
     },
- 
+    signupImage() {
+      return {
+        backgroundImage: `url(${this.signup})`
+      };
+    }
+  }
 };
 </script>
 
 <style lang="scss">
-
 .section-download {
   .md-button + .md-button {
     margin-left: 5px;
@@ -218,7 +217,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   -o-font-smoothing: antialiased;
-  font-smoothing: antialiased;
+  -font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 

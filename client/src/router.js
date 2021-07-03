@@ -6,9 +6,9 @@ import Login from "./views/Login.vue";
 import Profile from "./views/Profile.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
-import Signup from "./views/Signup.vue";
 import Form from "./views/Form.vue";
-
+import Admin from "./views/Admin.vue";
+import Signup from "./views/Signup.vue";
 
 Vue.use(Router);
 
@@ -23,6 +23,7 @@ export default new Router({
         footer: { backgroundColor: "black" }
       }
     },
+
     {
       path: "/landing",
       name: "landing",
@@ -58,7 +59,8 @@ export default new Router({
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
       }
-    },{
+    },
+    {
       path: "/:id",
       name: "/id",
       components: { default: Profile, header: MainNavbar, footer: MainFooter },
@@ -75,7 +77,26 @@ export default new Router({
         header: { colorOnScroll: 400 },
         footer: { backgroundColor: "black" }
       }
+    },
+    {
+      path: "/admin/cars",
+      name: "admin",
+      components: { default: Admin, header: MainNavbar, footer: MainFooter },
+      props: {
+        header: { colorOnScroll: 400 },
+        footer: { backgroundColor: "black" }
+      }
     }
+
+    //   {
+    //     path: "/admin/cars/:id/edit",
+    //     name: "AdminCarsEdit",
+    //     components: { default: AdminCarsEdit, header: MainNavbar, footer: MainFooter },
+    //     props: {
+    //       header: { colorOnScroll: 400 },
+    //       footer: { backgroundColor: "black" }
+    //     }
+    // },
   ],
   scrollBehavior: to => {
     if (to.hash) {
