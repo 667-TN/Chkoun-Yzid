@@ -1,22 +1,21 @@
 <template>
   <div class="cars">
-    <div class="card" v-for="(car) in cars" :key="car.id">
+    <div class="card" v-for="car in cars" :key="car.id">
       <img :src="car.url" style="width: 100%" />
-      <h3 class="title">{{car.car_name}}</h3>
-      <p class="price">{{car.car_price}}</p>
-      <p class="description">{{car.description}}</p>
-      <p><router-link  :to="''+car.id" >Bid Now</router-link></p>
+      <Countdown :deadline="car.end_date"></Countdown>
+      <h3 class="title">{{ car.car_name }}</h3>
+      <p class="price">{{ car.car_price }}</p>
+      <p class="description">{{ car.description }}</p>
+      <p><router-link :to="'' + car.id">Bid Now</router-link></p>
     </div>
-    
   </div>
 </template>
 
-
-
-  <script>
+<script>
+import Countdown from "vuejs-countdown";
 export default {
   name: "ProductCard",
-  components: {},
+  components: { Countdown },
 
   data() {
     return {
@@ -24,7 +23,7 @@ export default {
     };
   },
 
-  methods : {},
+  methods: {},
   // methods: {
   //      ToProfile(id){
   //        console.log(id)
@@ -42,8 +41,6 @@ export default {
 };
 </script>
 
-
-
 <style scoped>
 .cars {
   display: grid;
@@ -57,7 +54,7 @@ export default {
   margin: auto;
   text-align: center;
   font-family: arial;
-  border-radius: 12px
+  border-radius: 12px;
 }
 
 .price {
@@ -74,7 +71,7 @@ export default {
   cursor: pointer;
   width: 100%;
   font-size: 18px;
-  border-radius: 12px
+  border-radius: 12px;
 }
 
 .card button:hover {

@@ -48,6 +48,23 @@ var addACar = function(req,res){
       console.log("posted:", car)
     }
   });
-}
+};
 
-module.exports = { selectAllCars, selectOneCar, addACar };
+var  updateACar = function(req, res) {
+  let id = Number(req.params.id)
+  let updatedCar=req.body
+  delete updatedCar.id
+  const query=Object.keys(updatedCar).join(" = ? , ")+"=?"
+  const values=Object.values(updatedCar)
+  let syntax = `UPDATE car SET ${query} WHERE car.id=${id}`
+  console.log("query",query,"values",values,"syntax",syntax)
+   db.query(syntax,values,(err, cars)=> {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(cars);
+    }
+   })
+};
+
+module.exports = { selectAllCars, selectOneCar, addACar, updateACar };

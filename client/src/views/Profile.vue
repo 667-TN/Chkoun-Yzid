@@ -10,7 +10,7 @@
         <div class="md-layout-item md-size-66 mx-auto md-small-size-100">
           <md-card>
             <el-carousel trigger="click" :interval="5000">
-              <el-carousel-item v-for="car in car" :key="car.id">
+              <el-carousel-item >
                 <h4 class="carousel-caption">
                   <i class="fas fa-car"></i>
                   {{ car.location }}
@@ -25,8 +25,8 @@
         </div>
       </div>
       <div>
-        <md-toolbar v-for="car in car" :key="car.id">
-          <h3 class="md-title">TimeLeft ({{ time }})</h3>
+        <md-toolbar >
+          <Countdown :deadline="car.end_date"></Countdown>
           <h3 class="md-title">nb of bids#{{ car.nb_bids }}</h3>
           <h3 class="md-title">highest bid({{car.car_price}})</h3> 
           <md-button class="md-raised md-primary" @click="addBid()">Place Bid</md-button>
@@ -43,6 +43,7 @@
             <md-table-head>Mileage</md-table-head>
           </md-table-row>
           <md-table-row v-for="car in car" :key="car.id">
+
             <md-table-cell>{{ car.make }}</md-table-cell>
             <md-table-cell>{{ car.model }}</md-table-cell>
             <md-table-cell>{{ car.VIN }}</md-table-cell>
@@ -56,10 +57,11 @@
   </div>
 </template>
 <script>
+import Countdown from 'vuejs-countdown'
+
 export default {
   data() {
     return {
-      date: moment(60 * 10 * 1000),
       car: [],
       carousel: [
         {
@@ -78,17 +80,28 @@ export default {
       type: String,
       default: require("@/assets/img/faces/christian.jpg"),
     },
+    
   },
-  components: {},
+  components: {Countdown},
   methods: {
     addBid: function() {
       this.$prompt("Place your bid !!").then((text) => {
-        let price=this.$store.state.cars.currentCar[0].car_price.replace(",","").slice(1)
-        let numberPrice=Number(price)
-        let numberText=Number(text)
-        if(numberPrice<numberText){
-          this.$store.state.cars.currentCar[0].car_price='$'+text
-          this.$store.state.cars.currentCar[0].nb_bids++
+        let price=this.$store.state.cars.currentCar[0].car_price
+        let bid=Number(text)
+        if(price<bid){
+          this.$store.dispatch("UPDATE_A_CAR",{
+            // this.$store.state.cars.currentCar[0].car_price=bid,
+            id:this.$store.state.cars.currentCar[0].id,
+            car_price:bid,
+            nb_bids:this.$store.state.cars.currentCar[0].nb_bids+1
+          }).then((result)=>{
+            console.log("car",this.car)
+            this.car.car_price=bid;
+            this.car.nb_bids+=1
+            console.log(result)
+          }).catch ((error)=> {
+            console.log(error)
+          })
         }
         else{
           this.$alert("Please insert a bid bigger than the last price!! (example: 50000)");
@@ -97,9 +110,6 @@ export default {
     },
   },
   computed: {
-    time: function() {
-      return this.date.format("mm:ss");
-    },
     headerStyle() {
       return {
         backgroundImage: `url(${this.header})`,
@@ -110,16 +120,11 @@ export default {
     try {
       const id = this.$route.params.id;
       const data = await this.$store.dispatch("GET_A_CAR", id);
-      this.car = data;
+      this.car = data[0];
       // console.log("this is the car that you clicked on --------", this.car);
     } catch (error) {
       console.log(error);
     }
-    timeStamp = function() {
-      setInterval(() => {
-        this.date = moment(this.date.subtract(1, "seconds"));
-      }, 1000);
-    };
   },
 };
 </script>
