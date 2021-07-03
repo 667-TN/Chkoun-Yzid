@@ -20,10 +20,13 @@ const cars = {
             state.cars = state.cars.filter(car => car.id !== payload.id)
         },
         UPDATE_CAR: (state, payload) => {
-            state.cars = state.cars.forEach((car, index) => {
-                if (car.id === payload.id) {
-                    state.cars[index] = payload
+            state.cars = state.cars.map((car, index) => {
+                if (car.id === payload.id){
+                    for(let key in payload){
+                        car[key] = payload[key]
+                    }
                 }
+                return car
             })
         },
         SET_CURRENT_CAR: (state, payload) => {
