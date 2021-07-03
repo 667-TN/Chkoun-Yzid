@@ -8,7 +8,7 @@
           >
             <h1 class="title">Your Story Starts With Us.</h1>
             <h4>
-              Our web-site is a Cool Car Auctions
+              Our web-site is a Cool Car Auctions where you can BID an buy a Nice car 
             </h4>
             <br />
           </div>
@@ -19,18 +19,6 @@
       <div class="section">
         <div class="container">
           <div class="md-layout">
-            <div
-              class="md-layout-item md-size-66 md-xsmall-size-100 mx-auto text-center"
-            >
-              <h2 class="title text-center">Let's talk product</h2>
-              <h5 class="description">
-                This is the paragraph where you can write more details about
-                your product. Keep you user engaged by providing meaningful
-                information. Remember that by this time, the user is curious,
-                otherwise he wouldn't scroll to get here. Add a button if you
-                want the user to see more.
-              </h5>
-            </div>
           </div>
           <div class="features text-center">
             <div class="md-layout">
@@ -76,15 +64,12 @@
 
                     <md-card-content>
                       <p class="card-description">
-                        You can write here details about one of your team
-                        members. You can give more details about what they do.
-                        Feel free to add some <a href="#">links</a> for people
-                        to be able to follow them outside the site.
+                        He is the one how is in charge of deviding the tasks and motivating the team to work
                       </p>
                     </md-card-content>
 
                     <md-card-actions class="text-center">
-                            <md-button
+                      <md-button
                         href="https://www.facebook.com/aziz.saad23/"
                         class="md-just-icon md-simple"
                       >
@@ -96,7 +81,6 @@
                       >
                         <i class="fab fa-instagram"></i>
                       </md-button>
-                
                     </md-card-actions>
                   </md-card>
                 </div>
@@ -121,10 +105,7 @@
 
                     <md-card-content>
                       <p class="card-description">
-                        You can write here details about one of your team
-                        members. You can give more details about what they do.
-                        Feel free to add some <a href="#">links</a> for people
-                        to be able to follow them outside the site.
+                       Every change that is maked on the web-site he should approved
                       </p>
                     </md-card-content>
 
@@ -165,10 +146,7 @@
 
                     <md-card-content>
                       <p class="card-description">
-                        You can write here details about one of your team
-                        members. You can give more details about what they do.
-                        Feel free to add some <a href="#">links</a> for people
-                        to be able to follow them outside the site.
+                       he is our Magician how can turn every detail into code 
                       </p>
                     </md-card-content>
 
@@ -204,35 +182,35 @@ export default {
   props: {
     header: {
       type: String,
-      default: require("@/assets/img/bg7.jpg"),
+      default: require("@/assets/img/bg7.jpg")
     },
     teamImg1: {
       type: String,
-      default: require("@/assets/img/faces/avatar.jpg"),
+      default: require("@/assets/img/faces/avatar.jpg")
     },
     teamImg2: {
       type: String,
-      default: require("@/assets/img/faces/christian.jpg"),
+      default: require("@/assets/img/faces/christian.jpg")
     },
     teamImg3: {
       type: String,
-      default: require("@/assets/img/faces/kendall.jpg"),
-    },
+      default: require("@/assets/img/faces/kendall.jpg")
+    }
   },
   data() {
     return {
       name: null,
       email: null,
-      message: null,
+      message: null
     };
   },
   computed: {
     headerStyle() {
       return {
-        backgroundImage: `url(${this.header})`,
+        backgroundImage: `url(${this.header})`
       };
-    },
-  },
+    }
+  }
 };
 </script>
 

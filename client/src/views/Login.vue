@@ -9,7 +9,6 @@
             <login-card header-color="green">
               <h4 slot="title" class="card-title">Login</h4>
 
-             
               <md-field class="md-form-group" slot="inputs">
                 <md-icon>email</md-icon>
                 <label>Email...</label>
@@ -20,8 +19,12 @@
                 <label>Password...</label>
                 <md-input v-model="password" type="password"></md-input>
               </md-field>
-              <md-button slot="footer" class="md-simple md-success md-lg" @click="login()">
-              Login
+              <md-button
+                slot="footer"
+                class="md-simple md-success md-lg"
+                @click="login()"
+              >
+                Login
               </md-button>
             </login-card>
           </div>
@@ -36,13 +39,13 @@ import { LoginCard } from "@/components";
 
 export default {
   components: {
-    LoginCard,
+    LoginCard
   },
   bodyClass: "login-page",
   data() {
     return {
       email: "",
-      password: "",
+      password: ""
     };
   },
   methods: {
@@ -50,27 +53,27 @@ export default {
       const res = await this.$store.dispatch("LOGIN", {
         email: this.email,
         password: this.password
-      })
-      this.ToAuction()
-      console.log(res)
+      });
+      this.ToAuction();
+      console.log(res);
     },
     ToAuction() {
       this.$router.push({ name: "index" });
-    },
+    }
   },
   props: {
     header: {
       type: String,
-      default: require("@/assets/img/profile_city.jpg"),
-    },
+      default: require("@/assets/img/profile_city.jpg")
+    }
   },
   computed: {
     headerStyle() {
       return {
-        backgroundImage: `url(${this.header})`,
+        backgroundImage: `url(${this.header})`
       };
-    },
-  },
+    }
+  }
 };
 </script>
 

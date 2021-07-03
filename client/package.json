@@ -1,19 +1,20 @@
 {
   "name": "Chkoun-Yzid",
-  "author": "Aziz Saad , Aziz Tounsi , Achref Gallah",
-  "description": "Auction Web-Site For Cars",
   "version": "1.2.2",
   "private": true,
+  "description": "Auction Web-Site For Cars",
+  "author": "Aziz Saad , Aziz Tounsi , Achref Gallah",
   "scripts": {
-    "start": "vue-cli-service serve --open",
     "build": "vue-cli-service build && gulp licenses",
     "lint": "vue-cli-service lint",
     "dev": "npm run serve",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run dev"
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run dev",
+    "start": "vue-cli-service serve --open"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "bootstrap-vue": "^2.21.2",
+    "cloudinary-vue": "^1.0.0-beta3",
     "core-js": "3.5.0",
     "nouislider": "14.1.0",
     "v-tooltip": "2.0.2",
@@ -39,11 +40,12 @@
     "eslint": "6.7.2",
     "eslint-plugin-prettier": "3.1.1",
     "eslint-plugin-vue": "6.0.1",
+    "gulp": "4.0.2",
+    "gulp-append-prepend": "1.0.8",
     "prettier": "1.19.1",
     "sass": "1.23.7",
     "sass-loader": "8.0.0",
-    "vue-template-compiler": "2.6.10",
-    "gulp": "4.0.2",
-    "gulp-append-prepend": "1.0.8"
+    "vue-cli-plugin-cloudinary": "0.0.5",
+    "vue-template-compiler": "2.6.10"
   }
 }

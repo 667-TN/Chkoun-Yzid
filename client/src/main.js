@@ -1,4 +1,3 @@
-
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
@@ -6,16 +5,15 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 import store from "./store";
 import VueSimpleAlert from "vue-simple-alert";
-
-
+// import Cloudinary from "../cloudinary.js"
 import MaterialKit from "./plugins/material-kit";
+import "../cloudinary.js";
 
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
 Vue.use(MaterialKit);
-Vue.use(require('vue-moment'));
+Vue.use(require("vue-moment"));
 Vue.use(VueSimpleAlert);
-
 
 const NavbarStore = {
   showNavbar: false

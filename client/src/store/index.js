@@ -1,17 +1,17 @@
-import Vuex from "vuex"
-import Vue from "vue"
-import cars from "./cars"
-import users from "./users"
-import bids from "./bids"
+import Vuex from "vuex";
+import Vue from "vue";
+import cars from "./cars";
+import users from "./users";
+import bids from "./bids";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
-    modules: {
-        users,
-        cars,
-        bids
-    }
-})
+  modules: {
+    users,
+    cars,
+    bids
+  }
+});
 
-export default store
+export default store;
