@@ -95,7 +95,7 @@
         </fieldset>
         <fieldset>
           <label>Image</label>
-          <input type="file" tabindex="10" required />
+          <input type="file" tabindex="10" @change="onFileSelected" required />
         </fieldset>
         <fieldset>
           <label>Description</label>
@@ -155,7 +155,9 @@ export default {
     };
   },
   methods: {
-    
+      onFileSelected(event){
+       this.url= event.target.files[0]
+    },
     async addCar() {
       const res = await this.$store.dispatch("VERIFY_AUTH")
       console.log(this.$store);
@@ -177,7 +179,7 @@ export default {
     },
     ToAuction() {
       this.$router.push({ name: "index" });
-    },
+    }
   },
     computed: {
       headerStyle() {

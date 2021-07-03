@@ -28,8 +28,9 @@ const cars = {
                         car[key] = payload[key]
                 }
                 return car
-            })
-        },
+            }
+        })
+    },
         SET_CURRENT_CAR: (state, payload) => {
             state.currentCar = payload
 

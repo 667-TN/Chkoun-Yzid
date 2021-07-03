@@ -26,9 +26,9 @@
       </div>
       <div>
         <md-toolbar >
-          <Countdown :deadline="car.end_date"></Countdown>
-          <h3 class="md-title">nb of bids#{{ car.nb_bids }}</h3>
-          <h3 class="md-title">highest bid({{car.car_price}})</h3> 
+          <Countdown ></Countdown>
+          <h3 class="md-title">nb of bids# {{ car.nb_bids }}</h3>
+          <h3 class="md-title">highest bid ({{car.car_price}})</h3> 
           <md-button class="md-raised md-primary" @click="addBid()">Place Bid</md-button>
         </md-toolbar>
       </div>
@@ -42,7 +42,7 @@
             <md-table-head>Transimission</md-table-head>
             <md-table-head>Mileage</md-table-head>
           </md-table-row>
-          <md-table-row v-for="car in car" :key="car.id">
+          <md-table-row >
 
             <md-table-cell>{{ car.make }}</md-table-cell>
             <md-table-cell>{{ car.model }}</md-table-cell>
