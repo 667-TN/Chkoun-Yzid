@@ -8,15 +8,15 @@
       <nav>
         <ul>
           <li>
-            <a >
-             Chkoun Yzid
+            <a>
+              Chkoun Yzid
             </a>
           </li>
           <li>
-          <a href='https://github.com/667-TN/'>
-            Github
-          </a>
-            </li>
+            <a href="https://github.com/667-TN/">
+              Github
+            </a>
+          </li>
         </ul>
       </nav>
       <div class="copyright">

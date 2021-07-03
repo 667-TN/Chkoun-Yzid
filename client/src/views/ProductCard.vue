@@ -19,7 +19,7 @@ export default {
 
   data() {
     return {
-      cars: [],
+      cars: []
     };
   },
 
@@ -37,7 +37,7 @@ export default {
     } catch (error) {
       console.log(error);
     }
-  },
+  }
 };
 </script>
 

@@ -11,15 +11,14 @@
         <md-list-item to="/">
           <p>Chkoun Yzid</p>
         </md-list-item>
-          
       </div>
-        <li class="md-list-item">
-                <md-list-item to="/landing">
-                  <p>About Us </p>
-                </md-list-item>
-              </li>
+      <li class="md-list-item">
+        <md-list-item to="/landing">
+          <p>About Us</p>
+        </md-list-item>
+      </li>
 
-                  <!-- <li class="md-list-item">
+      <!-- <li class="md-list-item">
                 <md-list-item to="/admin/cars">
                   <p>Profile</p>
                 </md-list-item>
@@ -103,7 +102,7 @@ function resizeThrottler(actualResizeHandler) {
 import MobileMenu from "@/layout/MobileMenu";
 export default {
   components: {
-    MobileMenu,
+    MobileMenu
   },
   props: {
     type: {
@@ -117,30 +116,30 @@ export default {
           "danger",
           "success",
           "warning",
-          "info",
+          "info"
         ].includes(value);
-      },
+      }
     },
     colorOnScroll: {
       type: Number,
-      default: 0,
-    },
+      default: 0
+    }
   },
   data() {
     return {
       query: "",
       extraNavClasses: "",
-      toggledClass: false,
+      toggledClass: false
     };
   },
   computed: {
     showDownload() {
       const excludedRoutes = ["login", "landing", "profile"];
-      return excludedRoutes.every((r) => r !== this.$route.name);
+      return excludedRoutes.every(r => r !== this.$route.name);
     },
     isLoggedIn() {
       return this.$store.getters.isLoggedIn;
-    },
+    }
   },
   methods: {
     bodyClick() {
@@ -212,14 +211,14 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    },
+    }
   },
   mounted() {
     document.addEventListener("scroll", this.scrollListener);
   },
   beforeDestroy() {
     document.removeEventListener("scroll", this.scrollListener);
-  },
+  }
 };
 </script>
 

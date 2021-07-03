@@ -29,8 +29,12 @@
                 <label>Password...</label>
                 <md-input v-model="password" type="password"></md-input>
               </md-field>
-              <md-button slot="footer" class="md-simple md-success md-lg" @click="signup()">
-               Register
+              <md-button
+                slot="footer"
+                class="md-simple md-success md-lg"
+                @click="signup()"
+              >
+                Register
               </md-button>
             </login-card>
           </div>
@@ -45,7 +49,7 @@ import { LoginCard } from "@/components";
 
 export default {
   components: {
-    LoginCard,
+    LoginCard
   },
   bodyClass: "login-page",
   data() {
@@ -55,7 +59,7 @@ export default {
       email: "",
       password: "",
       front_id_img: "hardcoded",
-      back_id_img: "hardcoded",
+      back_id_img: "hardcoded"
     };
   },
   methods: {
@@ -67,27 +71,27 @@ export default {
         email: this.email,
         password: this.password,
         front_id_img: this.front_id_img,
-        back_id_img: this.back_id_img,
+        back_id_img: this.back_id_img
       });
-      this.ToAuction()
+      this.ToAuction();
     },
-       ToAuction() {
+    ToAuction() {
       this.$router.push({ name: "index" });
-    },
+    }
   },
   props: {
     header: {
       type: String,
-      default: require("@/assets/img/profile_city.jpg"),
-    },
+      default: require("@/assets/img/profile_city.jpg")
+    }
   },
   computed: {
     headerStyle() {
       return {
-        backgroundImage: `url(${this.header})`,
+        backgroundImage: `url(${this.header})`
       };
-    },
-  },
+    }
+  }
 };
 </script>
 
