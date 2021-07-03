@@ -69,6 +69,10 @@ export default {
         front_id_img: this.front_id_img,
         back_id_img: this.back_id_img,
       });
+      this.ToAuction()
+    },
+       ToAuction() {
+      this.$router.push({ name: "index" });
     },
   },
   props: {

@@ -3,6 +3,7 @@ import axios from "axios"
 const cars = {
     state: () => ({
         cars: [],
+
         currentCar: null
     }),
     getters: {
@@ -23,11 +24,13 @@ const cars = {
             state.cars = state.cars.forEach((car, index) => {
                 if (car.id === payload.id) {
                     state.cars[index] = payload
+
                 }
             })
         },
         SET_CURRENT_CAR: (state, payload) => {
             state.currentCar = payload
+
         }
     },
     actions: {
@@ -73,6 +76,7 @@ const cars = {
                     .catch(error => {
                         reject(error)
                     })
+                    
             }) 
         },
         GET_A_CAR: async ({commit}, id) => {
